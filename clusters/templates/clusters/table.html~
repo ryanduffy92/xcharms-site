@@ -12,11 +12,19 @@
 			padding: 5px;
 		}
 		th {
-			text-align: left
+			text-align: left;
+			background-color: black;
+			color: white;
 		}
 		td {
 			text-align: center;
 		}
+		tr:nth-child(even) {
+			background-color: #eee;
+		}
+		tr:nth-child(od) {
+			background-color: #fff;
+		}		
 		</style>
 	</head>
 	<body>
@@ -34,7 +42,7 @@
 			{% if all_clusters %}
 				{% for cluster in all_clusters %}
 					<tr>
-						<td><a href="/clusters/{{ cluster.root }}/">{{ cluster.root }}</a></td>
+						<td><a href="{% url 'analysis_page' cluster.root %}">{{ cluster.root }}</a>
 						<td>{{ cluster.z }}</td>
 						<td>{{ cluster.ra }}</td>
 						<td>{{ cluster.dec }}</td>
