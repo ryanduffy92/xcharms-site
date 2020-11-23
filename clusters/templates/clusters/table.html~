@@ -1,58 +1,12 @@
-<!DOCTYPE html>
+{% load render_table from django_tables2 %}
+{% load static %}
+<!doctype html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<title>XCHARMS clusters</title>
-		<style>
-		table, th, td {
-			border: 1px solid black;
-			border-collapse: collapse;
-		}
-		th, td {
-			padding: 5px;
-		}
-		th {
-			text-align: left;
-			background-color: black;
-			color: white;
-		}
-		td {
-			text-align: center;
-		}
-		tr:nth-child(even) {
-			background-color: #eee;
-		}
-		tr:nth-child(od) {
-			background-color: #fff;
-		}		
-		</style>
+		<title>XCHARMS Clusters</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'clusters/table_style.css' %}">
 	</head>
 	<body>
-		<h2>Table of XCHARMS Clusters</h2>
-		
-		<table>
-			<tr>
-				<th>Cluster</th>
-				<th>z</th>
-				<th>RA</th>
-				<th>Dec</th>
-				<th>Clean exptime (s)</th>
-				<th>Catalogue</th>
-			</tr>
-			{% if all_clusters %}
-				{% for cluster in all_clusters %}
-					<tr>
-						<td><a href="{% url 'analysis_page' cluster.root %}">{{ cluster.root }}</a>
-						<td>{{ cluster.z }}</td>
-						<td>{{ cluster.ra }}</td>
-						<td>{{ cluster.dec }}</td>
-						<td>{{ cluster.goodtime }}</td>
-						<td>{{ cluster.catalogue }}</td>
-					</tr>
-				{% endfor %}
-			{% else %}
-				<p>Cluster database is empty.</p>
-			{% endif %}
-		</table>
+		{% render_table table %}
 	</body>
 </html>

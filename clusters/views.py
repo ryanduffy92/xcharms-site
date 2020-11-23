@@ -1,12 +1,18 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
+from django.views.generic import ListView
+
+from django_tables2 import SingleTableView
 
 from .models import Cluster
+from .tables import ClusterTable
 
-def table(request):
-	all_clusters = Cluster.objects.order_by('z')
-	context = {'all_clusters': all_clusters}
-	return render(request, 'clusters/table.html', context)
+SingleTableView.table_pagination = False
+
+class ClusterListView(SingleTableView):
+	model = Cluster
+	table_class = ClusterTable
+	template_name = 'clusters/table.html'
 
 def analysis_page(request, root):
 	cluster = get_object_or_404(Cluster, pk=root)
