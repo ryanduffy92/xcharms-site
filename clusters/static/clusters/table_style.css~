@@ -7,7 +7,7 @@ th, td {
 }
 th {
 		text-align: left;
-		background-color: cyan;
+		background-color: pink;
 }
 td {
 		text-align: center;
