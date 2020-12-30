@@ -16,7 +16,7 @@
 		<div class="main">
 		<h2> {{ cluster.root }} </h2>
 		<p>This will display the cluster analysis of the cluster with root {{ cluster.root }}.</p>
-		<img src="{% static 'clusters/'|add:cluster.root|add:'smooth.png' %}" alt="Smooth image of cluster" class="center">
+		<img src="{% static 'clusters/'|add:cluster.root|add:'/'|add:cluster.root|add:'smooth.png' %}" alt="Smooth image of cluster" class="center">
 		</div>
 	</body>
 </html>
