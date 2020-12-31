@@ -2,29 +2,6 @@ body {
 		font-family: "Lato", sans-serif;
 }
 
-table, th, td {
-		border: 1px solid black;
-		border-collapse: collapse;
-		margin-left: 160px;
-}
-th, td {
-		padding: 5px;
-}
-th {
-		text-align: left;
-		background-color: pink;
-}
-td {
-		text-align: center;
-}
-tr:nth-child(even) {
-		background-color: #eee;
-}
-tr:nth-child(od) {
-		background-color: #fff;
-}
-th tr td a { color: white; }
-
 .sidenav {
 		height: 100%;
 		width: 160px;

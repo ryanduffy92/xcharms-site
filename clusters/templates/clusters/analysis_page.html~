@@ -4,6 +4,30 @@
 	<head>
 		<title> {{ cluster.root }} </title>
 		<link rel="stylesheet" type="text/css" href="{% static 'clusters/css/analysis_page.css' %}">
+<style>
+table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+		
+}
+th, td {
+		padding: 5px;
+}
+th {
+		text-align: left;
+		background-color: pink;
+}
+td {
+		text-align: center;
+}
+tr:nth-child(even) {
+		background-color: #eee;
+}
+tr:nth-child(od) {
+		background-color: #fff;
+}
+th tr td a { color: white; }
+</style>
 	</head>
 	<body>
 		<div class="sidenav">
@@ -15,8 +39,36 @@
 		
 		<div class="main">
 		<h2> {{ cluster.root }} </h2>
-		<p>This will display the cluster analysis of the cluster with root {{ cluster.root }}.</p>
 		<img src="{% static 'clusters/'|add:cluster.root|add:'/'|add:cluster.root|add:'smooth.png' %}" alt="Smooth image of cluster" class="center">
+		<p>This will display the cluster analysis of the cluster with root {{ cluster.root }}.</p>
 		</div>
+
+		<table>
+			<tr>
+				<th>ObsID</th>
+				<th>Detector</th>
+				<th>CCDs</th>
+				<th>Exp Goodtime (ks)</th>
+				<th>Goodtime (s)</th>
+				<th>Badtime (s)</th>
+				<th>Public Date</th>
+			</tr>
+			{% if obs_list %}
+				{% for obs in obs_list %}
+				<tr>
+					<td>{{ obs.obsid }}</a>
+					<td>{{ obs.instrument }}</td>
+					<td>{{ obs.detnam }}</td>
+					<td>{{ obs.expgoodtime }}</td>
+					<td>{{ obs.goodtime }}</td>
+					<td>{{ obs.badtime }}</td>
+					<td>{{ obs.pubdate }}</td>
+			</tr>
+				{% endfor %}
+			{% else %}
+				<p>No observations available.</p>
+			{% endif %}
+		</table>
+
 	</body>
 </html>

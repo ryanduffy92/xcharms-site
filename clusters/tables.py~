@@ -9,4 +9,3 @@ class ClusterTable(tables.Table):
 		model = Cluster
 		template_name = "django_tables2/bootstrap.html"
 		fields = ("root", "z", "ra", "dec", "goodtime", "catalogue", )
-	SingleTableView.table_pagination = False

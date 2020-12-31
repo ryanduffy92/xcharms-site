@@ -4,7 +4,7 @@ from django.views.generic import ListView
 
 from django_tables2 import SingleTableView
 
-from .models import Cluster
+from .models import Cluster, Obs
 from .tables import ClusterTable
 
 SingleTableView.table_pagination = False
@@ -16,4 +16,5 @@ class ClusterListView(SingleTableView):
 
 def analysis_page(request, root):
 	cluster = get_object_or_404(Cluster, pk=root)
-	return render(request, 'clusters/analysis_page.html', {'cluster': cluster})
+	obs_list = Obs.objects.all().filter(cluster=root)
+	return render(request, 'clusters/analysis_page.html', {'cluster': cluster, 'obs_list': obs_list})
